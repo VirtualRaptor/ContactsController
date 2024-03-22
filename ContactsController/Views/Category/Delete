@@ -1,0 +1,81 @@
+@model Category
+
+<form method="post" asp-action="Delete">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Usuń kontakt</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="Imię">Imię</label>
+            <input asp-for="Imię" class="form-control" />
+            <span asp-validation-for="Imię" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Nazwisko">Nazwisko</label>
+            <input asp-for="Nazwisko" class="form-control" />
+            <span asp-validation-for="Nazwisko" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Hasło">Hasło</label>
+            <input asp-for="Hasło" class="form-control" />
+            <span asp-validation-for="Hasło" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label>Kategoria</label>
+            <select id="Kategoria" class="form-control" onchange="showSubcategory()">
+                <option value="służbowy">Służbowy</option>
+                <option value="prywatny">Prywatny</option>
+                <option value="inny">Inny</option>
+            </select>
+            <span asp-validation-for="Kategoria" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3" id="PodKategoria">
+            <label>PodKategoria</label>
+            <span asp-validation-for="PodKategoria" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Telefon">Telefon</label>
+            <input asp-for="Telefon" class="form-control" />
+            <span asp-validation-for="Telefon" disabled class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DataUrodzin">Data Urodzin</label>
+            <input asp-for="DataUrodzin" class="form-control" />
+            <span asp-validation-for="DataUrodzin" disabled class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn-primary" style="width:150px">Usuń </button>
+        <a asp-controller="Category" asp-action="Index" class="btn-secondary" style="width:150px">
+            Powrót do listy
+        </a>
+    </div>
+</form>
+
+<script>
+    function showSubcategory() {
+        var kategoria = document.getElementById("Kategoria").value;
+        var podkategoriaDiv = document.getElementById("PodKategoria");
+        var podkategoriaInput;
+
+        if (kategoria === "służbowy") {
+            podkategoriaInput = '<select asp-for="PodKategoria" class="form-control">' +
+                '<option value="szef">Szef</option>' +
+                '<option value="klient">Klient</option>' +
+                '<option value="inny">Inny</option>' +
+                '</select>';
+        } else if (kategoria === "inny") {
+            podkategoriaInput = '<input asp-for="PodKategoria" class="form-control" />';
+        } else {
+            podkategoriaInput = '<input asp-for="PodKategoria" class="form-control" disabled />';
+        }
+
+        podkategoriaDiv.innerHTML = '<label>Podkategoria</label>' + podkategoriaInput;
+    }
+</script>

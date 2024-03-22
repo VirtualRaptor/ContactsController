@@ -28,9 +28,40 @@ namespace ContactsController.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
-            _db.Kategorie.Add(obj);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _db.Kategorie.Add(obj);
+                _db.SaveChanges();
+               
+            }
+            return View(obj);
+
+        }
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var categoryfromDb = _db.Kategorie.Find(id);
+            if (categoryfromDb == null)
+            {
+                return NotFound();
+            }
+            return View(categoryfromDb);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Kategorie.Add(obj);
+                _db.SaveChanges();
+
+            }
+            return View(obj);
+
         }
     }
 }

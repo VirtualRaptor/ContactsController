@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewData["Title"] = "Index";
 }
 <div class="container p-3">
@@ -24,6 +24,7 @@
             <th>Podkategoria</th>
             <th>Telefon</th>
             <th>DataUrodzenia</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -38,6 +39,16 @@
                 <td width="15%">@item.PodKategoria</td>
                 <td width="15%">@item.Telefon</td>
                 <td width="10%">@item.DataUrodzin</td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">
+                            <i class="bi bi-pencil-fill"></i> &nbsp; Edytuj
+                        </a>
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                            <i class="bi bi-trash-fill"></i> &nbsp; Usuń
+                        </a>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>

@@ -1,0 +1,71 @@
+﻿@model Category
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Dodaj nowy kontakt</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Imię">Imię</label>
+            <input asp-for="Imię" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Nazwisko">Nazwisko</label>
+            <input asp-for="Nazwisko" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Hasło">Hasło</label>
+            <input asp-for="Hasło" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Kategoria</label>
+            <select id="Kategoria" class="form-control" onchange="showSubcategory()">
+                <option value="służbowy">Służbowy</option>
+                <option value="prywatny">Prywatny</option>
+                <option value="inny">Inny</option>
+            </select>
+        </div>
+        <div class="mb-3" id="PodKategoria">
+            <label>PodKategoria</label>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Telefon">Telefon</label>
+            <input asp-for="Telefon" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="DataUrodzin">Data Urodzin</label>
+            <input asp-for="DataUrodzin" class="form-control" />
+        </div>
+        <button type="submit" class="btn-primary" style="width:150px">Dodaj </button>
+        <a asp-controller="Category" asp-action="Index" class="btn-secondary" style="width:150px">
+            Powrót do listy
+        </a>
+    </div>
+</form>
+
+<script>
+    function showSubcategory() {
+        var kategoria = document.getElementById("kategoria").value;
+        var podkategoriaDiv = document.getElementById("podkategoria");
+        var podkategoriaInput = '<input asp-for="PodKategoria" class="form-control" />';
+
+        if (kategoria === "służbowy") {
+            PodkategoriaInput = '<select asp-for="PodKategoria" class="form-control">' +
+                '<option value="szef">Szef</option>' +
+                '<option value="klient">Klient</option>' +
+                '<option value="inny">Inny</option>' +
+                '</select>';
+        } else if (kategoria === "inny") {
+            PodkategoriaInput = '<input asp-for="PodKategoria" class="form-control" />';
+        } else {
+            PodkategoriaInput = '<input asp-for="PodKategoria" class="form-control" disabled />';
+        }
+
+        pPodkategoriaDiv.innerHTML = '<label>Podkategoria</label>' + PodkategoriaInput;
+    }
+</script>

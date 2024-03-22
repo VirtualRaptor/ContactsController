@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Kontakty</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle-fill"></i> &nbsp; Dodaj nowy kontakt
+            </a>
+        </div>
+    </div>
+</div>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Email</th>
+            <th>Hasło</th>
+            <th>Kategoria</th>
+            <th>Podkategoria</th>
+            <th>Telefon</th>
+            <th>DataUrodzenia</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="15%">@item.Imię</td>
+                <td width="15%">@item.Nazwisko</td>
+                <td width="15%">@item.Email</td>
+                <td width="15%">@item.Hasło</td>
+                <td width="15%">@item.Kategoria</td>
+                <td width="15%">@item.PodKategoria</td>
+                <td width="15%">@item.Telefon</td>
+                <td width="10%">@item.DataUrodzin</td>
+            </tr>
+        }
+    </tbody>
+</table>

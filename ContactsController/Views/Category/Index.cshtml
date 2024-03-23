@@ -4,11 +4,11 @@
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Kontakty</h2>
+            <h2 class="text-primary">Kontakty</h2> <!-- Nagłówek "Kontakty" -->
         </div>
         <div class="col-6 text-end">
             <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle-fill"></i> &nbsp; Dodaj nowy kontakt
+                <i class="bi bi-plus-circle-fill"></i> &nbsp; Dodaj nowy kontakt <!-- Przycisk dodawania nowego kontaktu -->
             </a>
         </div>
     </div>
@@ -16,36 +16,36 @@
 <table class="table table-bordered table-striped" style="width:100%">
     <thead>
         <tr>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Email</th>
-            <th>Hasło</th>
-            <th>Kategoria</th>
-            <th>Podkategoria</th>
-            <th>Telefon</th>
-            <th>DataUrodzenia</th>
-            <th></th>
+            <th>Imię</th> <!-- Nagłówek kolumny "Imię" -->
+            <th>Nazwisko</th> <!-- Nagłówek kolumny "Nazwisko" -->
+            <th>Email</th> <!-- Nagłówek kolumny "Email" -->
+            <th>Hasło</th> <!-- Nagłówek kolumny "Hasło" -->
+            <th>Kategoria</th> <!-- Nagłówek kolumny "Kategoria" -->
+            <th>Podkategoria</th> <!-- Nagłówek kolumny "Podkategoria" -->
+            <th>Telefon</th> <!-- Nagłówek kolumny "Telefon" -->
+            <th>DataUrodzenia</th> <!-- Nagłówek kolumny "DataUrodzenia" -->
+            <th></th> <!-- Pusta kolumna na przyciski edycji i usuwania -->
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td width="15%">@item.Imię</td>
-                <td width="15%">@item.Nazwisko</td>
-                <td width="15%">@item.Email</td>
-                <td width="15%">@item.Hasło</td>
-                <td width="15%">@item.Kategoria</td>
-                <td width="15%">@item.PodKategoria</td>
-                <td width="15%">@item.Telefon</td>
-                <td width="10%">@item.DataUrodzin</td>
+                <td width="15%">@item.Imię</td> <!-- Wartość pola "Imię" -->
+                <td width="15%">@item.Nazwisko</td> <!-- Wartość pola "Nazwisko" -->
+                <td width="15%">@item.Email</td> <!-- Wartość pola "Email" -->
+                <td width="15%">@item.Hasło</td> <!-- Wartość pola "Hasło" -->
+                <td width="15%">@item.Kategoria</td> <!-- Wartość pola "Kategoria" -->
+                <td width="15%">@item.PodKategoria</td> <!-- Wartość pola "PodKategoria" -->
+                <td width="15%">@item.Telefon</td> <!-- Wartość pola "Telefon" -->
+                <td width="10%">@item.DataUrodzin</td> <!-- Wartość pola "DataUrodzenia" -->
                 <td>
                     <div class="w-75 btn-group" role="group">
                         <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">
-                            <i class="bi bi-pencil-fill"></i> &nbsp; Edytuj
+                            <i class="bi bi-pencil-fill"></i> &nbsp; Edytuj <!-- Przycisk edycji -->
                         </a>
                         <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
-                            <i class="bi bi-trash-fill"></i> &nbsp; Usuń
+                            <i class="bi bi-trash-fill"></i> &nbsp; Usuń <!-- Przycisk usuwania -->
                         </a>
                     </div>
                 </td>

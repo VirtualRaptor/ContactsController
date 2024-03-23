@@ -1,28 +1,30 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ContactsController.Models
 {
-	public class Category
-	{
-		[Key]
-		public int Id { get; set; }
-		[Required]
-		public string? Imię { get; set; }
-		[Required]
-		public string? Nazwisko { get; set; }
-		[Required]
-		[EmailAddress]
-		public string? Email { get; set; }
-		[Required]
-		[MinLength(6)]
-		public string? Hasło { get; set; }
-		public string? Kategoria { get; set; }
-		public string? PodKategoria { get; set; }
-		[Required]
-		public string? Telefon { get; set; }
-		public DateTime DataUrodzin { get; set; }
-	}
+    // Model reprezentujący kontakt
+    public class Category
+    {
+        [Key]
+        public int Id { get; set; } // Identyfikator kontaktu
 
+        public string? Imię { get; set; } // Imię kontaktu
 
+        public string? Nazwisko { get; set; } // Nazwisko kontaktu
+
+        [EmailAddress(ErrorMessage = "Nieprawidłowy format adresu email")]
+        public string? Email { get; set; } // Adres email kontaktu
+
+        [MinLength(6, ErrorMessage = "Hasło musi mieć co najmniej 6 znaków")]
+        public string? Hasło { get; set; } // Hasło kontaktu
+
+        public string? Kategoria { get; set; } // Kategoria kontaktu
+
+        public string? PodKategoria { get; set; } // Podkategoria kontaktu
+
+        public string? Telefon { get; set; } // Numer telefonu kontaktu
+
+        public DateTime DataUrodzin { get; set; } // Data urodzin kontaktu
+    }
 }
-

@@ -6,58 +6,60 @@
             <h2 class="text-primary">Dodaj nowy kontakt</h2>
             <hr />
         </div>
-        <div asp-validation-summary="All"></div>
+        <div asp-validation-summary="All"></div> <!-- Wyświetlanie zbiorczych komunikatów walidacji -->
         <div class="mb-3">
             <label asp-for="Imię">Imię</label>
             <input asp-for="Imię" class="form-control" />
-            <span asp-validation-for="Imię" class="text-danger"></span>
+            <span asp-validation-for="Imię" class="text-danger"></span> <!-- Wyświetlanie komunikatów walidacji dla Imię -->
         </div>
         <div class="mb-3">
             <label asp-for="Nazwisko">Nazwisko</label>
             <input asp-for="Nazwisko" class="form-control" />
-            <span asp-validation-for="Nazwisko" class="text-danger"></span>
+            <span asp-validation-for="Nazwisko" class="text-danger"></span> <!-- Wyświetlanie komunikatów walidacji dla Nazwisko -->
         </div>
         <div class="mb-3">
             <label asp-for="Email">Email</label>
             <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
+            <span asp-validation-for="Email" class="text-danger"></span> <!-- Wyświetlanie komunikatów walidacji dla Email -->
         </div>
         <div class="mb-3">
             <label asp-for="Hasło">Hasło</label>
             <input asp-for="Hasło" class="form-control" />
-            <span asp-validation-for="Hasło" class="text-danger"></span>
+            <span asp-validation-for="Hasło" class="text-danger"></span> <!-- Wyświetlanie komunikatów walidacji dla Hasło -->
         </div>
         <div class="mb-3">
             <label>Kategoria</label>
             <select id="Kategoria" class="form-control" onchange="showSubcategory()">
-                <option value="służbowy">Służbowy</option>
-                <option value="prywatny">Prywatny</option>
-                <option value="inny">Inny</option>
+                <option value="służbowy">Służbowy</option> <!-- Opcja dla kategorii służbowy -->
+                <option value="prywatny">Prywatny</option> <!-- Opcja dla kategorii prywatny -->
+                <option value="inny">Inny</option> <!-- Opcja dla kategorii inny -->
             </select>
-            <span asp-validation-for="Kategoria" class="text-danger"></span>
+            <span asp-validation-for="Kategoria" class="text-danger"></span> <!-- Wyświetlanie komunikatów walidacji dla Kategoria -->
         </div>
         <div class="mb-3" id="PodKategoria">
-            <label>PodKategoria</label>
-            <span asp-validation-for="PodKategoria" class="text-danger"></span>
+            <label>Podkategoria</label>
+            <span asp-validation-for="PodKategoria" class="text-danger"></span> <!-- Wyświetlanie komunikatów walidacji dla PodKategoria -->
         </div>
         <div class="mb-3">
             <label asp-for="Telefon">Telefon</label>
             <input asp-for="Telefon" class="form-control" />
-            <span asp-validation-for="Telefon" class="text-danger"></span>
+            <span asp-validation-for="Telefon" class="text-danger"></span> <!-- Wyświetlanie komunikatów walidacji dla Telefon -->
         </div>
         <div class="mb-3">
             <label asp-for="DataUrodzin">Data Urodzin</label>
             <input asp-for="DataUrodzin" class="form-control" />
-            <span asp-validation-for="DataUrodzin" class="text-danger"></span>
+            <span asp-validation-for="DataUrodzin" class="text-danger"></span> <!-- Wyświetlanie komunikatów walidacji dla DataUrodzin -->
         </div>
-        <button type="submit" class="btn-primary" style="width:150px">Dodaj </button>
+        <button type="submit" class="btn-primary" style="width:150px">Dodaj </button> <!-- Przycisk do dodawania -->
         <a asp-controller="Category" asp-action="Index" class="btn-secondary" style="width:150px">
             Powrót do listy
         </a>
     </div>
 </form>
 
+
 <script>
+    // Funkcja odpowiedzialna za pokazywanie pola PodKategoria w zależności od wybranej kategorii
     function showSubcategory() {
         var kategoria = document.getElementById("Kategoria").value;
         var podkategoriaDiv = document.getElementById("PodKategoria");
